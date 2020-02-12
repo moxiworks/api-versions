@@ -9,6 +9,7 @@ module ApiVersions
     end
 
     def matches?(request)
+      return true unless(request.headers.present? and request.headers['Accept'])
       accepts = request.headers['Accept'].split(',')
       accepts.any? do |accept|
         accept.strip!
